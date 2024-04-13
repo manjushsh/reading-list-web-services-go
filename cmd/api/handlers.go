@@ -4,6 +4,9 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
+	"time"
+
+	"readinglist.manjushsh.github.io/internal/data"
 )
 
 func (app *application) healthcheck(w http.ResponseWriter, r *http.Request) {
@@ -11,9 +14,15 @@ func (app *application) healthcheck(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, http.StatusText(http.StatusMethodNotAllowed), http.StatusMethodNotAllowed)
 		return
 	}
-	fmt.Fprintf(w, "Status: %s\n", "Online")
-	fmt.Fprintf(w, "Environment: %s \n ", app.config.env)
-	fmt.Fprintf(w, "Version: %s\n", version)
+	data := map[string]string{
+		"status":      "Online",
+		"environment": app.config.env,
+		"version":     version,
+	}
+	if err := app.writeJSON(w, http.StatusOK, envolope{"data": data}); err != nil {
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
 }
 
 func (app *application) getCreateBookHandler(w http.ResponseWriter, r *http.Request) {
@@ -44,8 +53,22 @@ func (app *application) getBook(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, "Bad request.", http.StatusBadRequest)
 	}
-	// file deepcode ignore XSS: <It is demo project so ignore it.>
-	fmt.Fprintf(w, "Display details of book with id %d", idInt)
+
+	book := data.Book{
+		ID:        idInt,
+		CreatedAt: time.Now(),
+		Title:     "Test",
+		Published: 2019,
+		Pages:     300,
+		Geners:    []string{"f", "t"},
+		Raring:    5,
+		Version:   1,
+	}
+
+	if err := app.writeJSON(w, http.StatusOK, envolope{"book": book}); err != nil {
+		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
+		return
+	}
 }
 
 func (app *application) updateBook(w http.ResponseWriter, r *http.Request) {
