@@ -11,6 +11,6 @@ type Book struct {
 	Published int       `json:"published,omitempty"` // Makes Published optional
 	Pages     int       `json:"pages,omitempty"`
 	Geners    []string  `json:"geners,omitempty"`
-	Raring    float32   `json:"rating,omitempty"`
+	Rating    float32   `json:"rating,omitempty"`
 	Version   int16     `json:"-"`
 }
