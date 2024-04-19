@@ -10,6 +10,7 @@ import (
 	"time"
 
 	_ "github.com/lib/pq"
+	"readinglist.manjushsh.github.io/internal/data"
 )
 
 const version = "1.0.0"
@@ -17,6 +18,7 @@ const version = "1.0.0"
 type application struct {
 	config config
 	logger *log.Logger
+	models *data.Models
 }
 
 type config struct {
@@ -33,10 +35,6 @@ func main() {
 	flag.Parse()
 
 	loggger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
-	app := &application{
-		config: cfg,
-		logger: loggger,
-	}
 
 	db, err := sql.Open("postgres", cfg.dsn)
 	if err != nil {
@@ -51,6 +49,12 @@ func main() {
 	loggger.Printf("Connected to db pool")
 
 	addr := fmt.Sprintf(":%d", cfg.port)
+	models := data.NewModels(db)
+	app := &application{
+		config: cfg,
+		logger: loggger,
+		models: &models,
+	}
 
 	server := &http.Server{
 		Addr:         addr,

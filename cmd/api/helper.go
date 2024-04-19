@@ -9,12 +9,15 @@ import (
 
 type envolope map[string]any
 
-func (app *application) writeJSON(w http.ResponseWriter, status int, data any) error {
+func (app *application) writeJSON(w http.ResponseWriter, status int, data any, headers http.Header) error {
 	jsonData, err := json.MarshalIndent(data, "", "\t")
 	if err != nil {
 		http.Error(w, http.StatusText(http.StatusInternalServerError), http.StatusInternalServerError)
 	}
 	jsonData = append(jsonData, '\n')
+	for key, value := range headers {
+		w.Header()[key] = value
+	}
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(status)
 	w.Write(jsonData)

@@ -59,3 +59,13 @@ GRANT SELECT, INSERT, UPDATE, DELETE ON books TO readinglist;
 ```bash
 GRANT USAGE,SELECT ON SEQUENCE books_id_seq TO readinglist;
 ```
+
+#### Export env variable
+```bash
+export READINGLIST_DB_DSN='postgres://<username/role>:<password>@<hostname>/<dbname>?sslmode=disable'
+```
+
+In our case:
+```bash
+export READINGLIST_DB_DSN='postgres://readinglist:password@localhost/readinglist?sslmode=disable'
+```

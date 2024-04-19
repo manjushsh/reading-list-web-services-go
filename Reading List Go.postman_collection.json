@@ -1,0 +1,371 @@
+{
+	"info": {
+		"_postman_id": "087d2d12-cf31-4e01-b245-942bd10c51fa",
+		"name": "Reading List Go",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31349721"
+	},
+	"item": [
+		{
+			"name": "Create Book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"{{$randomLoremSentence}}\",\n    \"published\": 2014,\n    \"pages\": {{$randomInt}},\n    \"genres\": [\"{{$randomBsBuzz}}\", \"{{$randomVerb}}\"],\n    \"rating\": 3\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/books",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Book 1",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"{{$randomLoremSentence}}\",\n    \"published\": 2015,\n    \"pages\": 254,\n    \"genres\": [\"{{$randomBsBuzz}}\", \"{{$randomVerb}}\"],\n    \"rating\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/books",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 15 Apr 2024 05:06:26 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "66"
+						},
+						{
+							"key": "Content-Type",
+							"value": "text/plain; charset=utf-8"
+						}
+					],
+					"cookie": [],
+					"body": "{Molestiae quis porro et qui quasi. 2015 254 [enhance program] 5}\n"
+				},
+				{
+					"name": "Create Book - DB",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"{{$randomLoremSentence}}\",\n    \"published\": 2015,\n    \"pages\": 254,\n    \"genres\": [\"{{$randomBsBuzz}}\", \"{{$randomVerb}}\"],\n    \"rating\": 5\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/books",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Location",
+							"value": "v1/books/5"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Apr 2024 04:03:40 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "165"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"book\": {\n        \"id\": 5,\n        \"title\": \"Tempore aut enim qui.\",\n        \"published\": 2015,\n        \"pages\": 254,\n        \"genres\": [\n            \"benchmark\",\n            \"compress\"\n        ],\n        \"rating\": 5\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Update Book",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"{{$randomLoremSentence}}\",\n    \"published\": 2015,\n    \"pages\": {{$randomInt}},\n    \"genres\": [\"{{$randomBsBuzz}}\", \"{{$randomVerb}}\"],\n    \"rating\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/books/4",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books",
+						"4"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Book",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"{{$randomLoremSentence}}\",\n    \"published\": 2015,\n    \"pages\": {{$randomInt}},\n    \"genres\": [\"{{$randomBsBuzz}}\", \"{{$randomVerb}}\"],\n    \"rating\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/books/4",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"books",
+								"4"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Apr 2024 04:02:59 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "187"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"book\": {\n        \"id\": 4,\n        \"title\": \"Doloribus quas ipsum odit magni enim nulla unde.\",\n        \"published\": 2015,\n        \"pages\": 356,\n        \"genres\": [\n            \"seize\",\n            \"program\"\n        ],\n        \"rating\": 4\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Books",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Books",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/books",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Apr 2024 04:19:53 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "383"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"books\": [\n        {\n            \"id\": 4,\n            \"title\": \"Repudiandae nihil architecto sed illum a voluptas et et.\",\n            \"published\": 2015,\n            \"pages\": 721,\n            \"genres\": [\n                \"{iterate\",\n                \"reboot}\"\n            ],\n            \"rating\": 4\n        },\n        {\n            \"id\": 5,\n            \"title\": \"Tempore aut enim qui.\",\n            \"published\": 2015,\n            \"pages\": 254,\n            \"genres\": [\n                \"{benchmark\",\n                \"compress}\"\n            ],\n            \"rating\": 5\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get A Book",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books/5",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books",
+						"5"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get A Book",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/books/5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"books",
+								"5"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Apr 2024 04:21:32 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "167"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"book\": {\n        \"id\": 5,\n        \"title\": \"Tempore aut enim qui.\",\n        \"published\": 2015,\n        \"pages\": 254,\n        \"genres\": [\n            \"{benchmark\",\n            \"compress}\"\n        ],\n        \"rating\": 5\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete a Book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{BASE_URL}}/books/7",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"books",
+						"7"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Book",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/books/7",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"books",
+								"7"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 19 Apr 2024 04:24:15 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Book removed\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:4000/v1"
+		}
+	]
+}
